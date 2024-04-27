@@ -1,19 +1,26 @@
-import { Link, NavLink } from "react-router-dom";
-import useAuth from "../../Hook/useAuth";
-import { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+
+import { useContext, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
-    const { logOut, user } = useAuth();
 
-    const [userOpen,setUserOpen]=useState();
+
+    const [userOpen, setUserOpen] = useState();
+    const { user, logOut } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const navLink = <>
-
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='add'>All Art</NavLink></li>
         <li><NavLink to='/item'>Cart Item</NavLink></li>
-
     </>
+
+    const handleLogOUt = async () => {
+        await logOut()
+        alert("LogOut Successfully")
+        navigate("/login")
+    }
 
     return (
         <div>
@@ -25,6 +32,7 @@ const Navbar = () => {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             {navLink}
+                            <button>Logout</button>
                         </ul>
                     </div>
                     <a className="text-3xl font-bold">Art carft</a>
@@ -36,52 +44,53 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end  ">
-                   {/* <p className="btn btn-secondary  "><Link to= '/login'>Login</Link></p> */}
-                   <div className="relative md:border-l flex items-center w-full md:w-auto pl-5 ">
-                    <div className=" w-[50px]"></div>
+                    {/* <p className="btn btn-secondary  "><Link to= '/login'>Login</Link></p> */}
+                    <div className="relative md:border-l flex items-center w-full md:w-auto pl-5 ">
+                        <div className=" w-[50px]"></div>
 
-                    {user ? (
-                        <button
-                        onClick={() => setUserOpen(!userOpen)}
-                            className="border-2 border-[#FF497C] rounded-full w-[40px]"
-                        >
-                            <img
-                                src={user?.photoURL}
-                                alt=""
-                                className="w-10 h-10 rounded-full"
-                            />
-                        </button>
-                    ) : (
-                        <Link
-                            to={"/login"}
-                            className="bg-[#FF497C] hover:bg-[#ab3154]  duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded"
-                        >
-                            Login
-                        </Link>
-                    )}
+                        {user ? (
+                            <button
+                                onClick={() => setUserOpen(!userOpen)}
+                                className="border-2 border-[#FF497C] rounded-full w-[40px]"
+                            >
+                                <img
+                                    src={user?.photoURL}
+                                    alt=""
+                                    className="w-10 h-10 rounded-full"
+                                />
+                            </button>
+                        ) : (
+                            <Link
+                                to={"/login"}
+                                className="bg-[#FF497C] hover:bg-[#ab3154]  duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded"
+                            >
+                                Login
+                            </Link>
+                        )}
 
-                    {/* user Menu */}
-                    <div
-                        className={`absolute  ${ userOpen? "block" : "hidden"
-                            } flex flex-col  gap-4  shadow-lg bg-base-200 px-8 py-4 top-16 `}
-                    >
-                        <p className="text-sm  font-semibold">{user?.displayName}</p>
-                        <p className="text-sm font-semibold">{user?.email}</p>
-
-                        <button
-                            onClick={ logOut()}
-                            className="bg-[#FF497C] hover:bg-[#ab3154] duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded cursor-pointer"
+                        {/* user Menu */}
+                        <div
+                            className={`absolute  ${userOpen ? "block" : "hidden"
+                                } flex flex-col  gap-4  shadow-lg bg-base-200 px-8 py-4 top-16 `}
                         >
-                            logout
-                        </button>
+                            <p className="text-sm  font-semibold">{user?.displayName}</p>
+                            <p className="text-sm font-semibold">{user?.email}</p>
+
+                            {
+                                user && <button
+
+                                    className="bg-[#FF497C] hover:bg-[#ab3154] duration-200 text-white font-bold px-4 xl:px-6 py-1 rounded cursor-pointer"
+                                    onClick={handleLogOUt}
+                                >
+                                    logout
+                                </button>
+                            }
+
+                        </div>
+
                     </div>
-                </div>
 
                 </div>
-
-
-
-              
 
 
 

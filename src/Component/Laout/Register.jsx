@@ -2,30 +2,29 @@
 import { Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
-import useAuth from "../../Hook/useAuth";
+// import useAuth from "../../Hook/useAuth";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
 
-    const { crateUser } = useAuth();
+    const { registerUser, logOut } = useContext(AuthContext);
+    // console.log(googleLoginUser);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-      } = useForm()
-    
-      const onSubmit = data =>{
-        const {email,password} = data
-        crateUser(email,password)
-        .then(result =>{
-            console.log(result);
-        })
-      };
-      
-    
+    } = useForm()
 
-
-
+    const onSubmit = data => {
+        const { email, password } = data
+        registerUser(email, password)
+            .then(result => {
+                console.log(result);
+            })
+        logOut()
+    };
     return (
         <div>
             <h1 className="text-center text-3xl font-bold">Please Register</h1>
@@ -36,10 +35,10 @@ const Register = () => {
                     </label>
                     <input type="text" placeholder="Name"
                         name="name"
-                        className="input input-bordered" 
-                         {...register("name", { required: true })}
-                        />
-                         {errors.name && <span className="text-red-500">This field is required</span>}
+                        className="input input-bordered"
+                        {...register("name", { required: true })}
+                    />
+                    {errors.name && <span className="text-red-500">This field is required</span>}
                 </div>
                 <div className="form-control">
                     <label className="label">
@@ -47,10 +46,10 @@ const Register = () => {
                     </label>
                     <input type="text" placeholder="Photo URL"
                         name="photo"
-                        className="input input-bordered" 
+                        className="input input-bordered"
                         {...register("photo")}
-                        />
-                        {errors.photo && <span className="text-red-500">This field is required</span>}
+                    />
+                    {errors.photo && <span className="text-red-500">This field is required</span>}
                 </div>
                 <div className="form-control">
                     <label className="label">
@@ -58,10 +57,10 @@ const Register = () => {
                     </label>
                     <input type="email" placeholder="Email"
                         name="email"
-                        className="input input-bordered" 
+                        className="input input-bordered"
                         {...register("email", { required: true })}
-                        />
-                          {errors.email && <span className="text-rose-500">This field is required</span>}
+                    />
+                    {errors.email && <span className="text-rose-500">This field is required</span>}
                 </div>
                 <div className="form-control">
                     <label className="label">
@@ -74,10 +73,10 @@ const Register = () => {
                             placeholder="Password"
                             name="password"
 
-                            className="input w-full input-bordered"  
+                            className="input w-full input-bordered"
                             {...register("password", { required: true })}
-                            />
-                            {errors.password && <span className="text-red-500">This field is required</span>}
+                        />
+                        {errors.password && <span className="text-red-500">This field is required</span>}
                         {/* <span className="absolute top-3 right-2" onClick={() => setPassword(!password)}>
 
                         {
@@ -91,7 +90,7 @@ const Register = () => {
                     </label>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-primary">Register</button>
+                    <button className="btn btn-success">Register</button>
                 </div>
             </form>
             {/* 

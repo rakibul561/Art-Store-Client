@@ -1,79 +1,65 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,GithubAuthProvider, signOut } from "firebase/auth";
+/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
-import auth from "../Firebase/Firebase.config";
+import { GoogleAuthProvider,GithubAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import auth from "../../src/Firebase/Firebase.config";
+// import { GithubAuthProvider } from "firebase/auth/cordova";
 
-export const AuthContext = createContext(null)
+export const AuthContext = createContext(null);
 
+const googleProvider = new GoogleAuthProvider();
+const githubProvaider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
-    const googleProvider = new GoogleAuthProvider();
-    const githubProvider = new GithubAuthProvider();
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const registerUser = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
+
+    const loginUser = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    };
+    //   googel login
+    const googleLoginUser = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
+    };
+    // github login
+    const githubLogin  = () => {
+        return signInWithPopup(auth, githubProvaider);
+    };
 
 
-    const [user, setUser] = useState(null)
-    console.log(user);
+    // log out user
+    const logOut = () => {
+        setLoading(true);
+        return signOut(auth);
+    };
 
-    //    crate user
-
-    const crateUser = (email, password) => {
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
-
-
-    // sing in user
-    const signInUser = (email, password) => {
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-
-    // google login
-
-    const googleLogin = () => {
-        return signInWithPopup(auth, googleProvider)
-    }
-
-    /* Github Login */
-    const githubLogin = () => {
-        return signInWithPopup(auth, githubProvider)
-    }
-
-    // log out user 
-    const logOut = () =>{
-
-         signOut(auth)
-    }
-
-
-
-
-
-    //  observer
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user)
-
-            }
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            console.log(currentUser);
+            setLoading(false);
         });
 
+        return () => unsubscribe();
     }, [])
 
-
-    const allValues = {
-
-        crateUser,
-        signInUser,
-        googleLogin,
-        githubLogin,
+    const authInformation = {
+        user,
+        loading,
+        registerUser,
+        loginUser,
+        googleLoginUser,
         logOut,
-        user
+        githubLogin,
+    };
 
-    }
-    return (
-
-        <AuthContext.Provider value={allValues}>
-            {children}
-        </AuthContext.Provider>
-    );
+    return <AuthContext.Provider value={authInformation}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;
