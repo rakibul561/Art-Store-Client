@@ -1,5 +1,5 @@
 
-const Error = () => {
+const Error = () => {   
     return (
         <div>
             <div className=" lg:w-1/3 mx-auto mt-24">
