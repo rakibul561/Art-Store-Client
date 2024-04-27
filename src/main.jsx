@@ -11,6 +11,7 @@ import Home from './Component/Home/Home.jsx';
 import Login from './Component/Laout/Login.jsx';
 import Register from './Component/Laout/Register.jsx';
 import AuthProvider from './AuthProvider/AuthProvider.jsx';
+import Add from './Component/Home/Add.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path:'/addCarft',
+        element:<Add></Add>
       }
     ]
   },

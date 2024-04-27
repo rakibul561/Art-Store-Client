@@ -13,7 +13,7 @@ const Navbar = () => {
     const navLink = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='add'>All Art</NavLink></li>
-        <li><NavLink to='/item'>Cart Item</NavLink></li>
+        <li><NavLink to='/addCarft'>Add Craft</NavLink></li>
     </>
 
     const handleLogOUt = async () => {
@@ -21,7 +21,7 @@ const Navbar = () => {
         alert("LogOut Successfully")
         navigate("/login")
     }
-
+//    return
     return (
         <div>
             <div className="navbar bg-base-100 shadow-md rounded-lg">
