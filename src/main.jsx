@@ -12,16 +12,18 @@ import Login from './Component/Laout/Login.jsx';
 import Register from './Component/Laout/Register.jsx';
 import AuthProvider from './AuthProvider/AuthProvider.jsx';
 import Add from './Component/Home/Add.jsx';
+import Error from './Eroor/Error.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Rott></Rott>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/art') 
+        loader: () => fetch('http://localhost:5000/art')
       },
       {
         path: '/login',
