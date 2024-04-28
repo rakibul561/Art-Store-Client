@@ -19,7 +19,7 @@ const CartCard = ({ art }) => {
                 </div>
                 <p className="dark:text-gray-800">{short_description}</p>
                 <div className="flex justify-between">
-                    <p className="text-2xl font-semibold">Price: {price}</p>
+                    <p className="text-2xl font-semibold">Price: {price}<span className="text-yellow-800 ">$</span></p>
                     <p className="text-2xl text-yellow-700 font-semibold ">Rating: {rating}</p>
                 </div>
                  <div className="btn text-white text-xl mt-4 btn-success">

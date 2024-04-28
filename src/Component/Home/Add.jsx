@@ -63,7 +63,7 @@ const Add = () => {
                     <div className="md:flex mb-2">
                         <div className="form-control md:w-1/2 ">
                             <label className="label">
-                                <span className="label-text text-xl font-bold">item Name:</span>
+                                <span className="label-text text-xl font-bold"> Name:</span>
                             </label>
                             <input type="text" name="name" placeholder="Art name" className="input input-bordered w-full" required />
                         </div>
