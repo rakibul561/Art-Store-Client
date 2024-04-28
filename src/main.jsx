@@ -1,6 +1,7 @@
 
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import 'animate.css';
 
 import {
   createBrowserRouter,
@@ -13,12 +14,16 @@ import Register from './Component/Laout/Register.jsx';
 import AuthProvider from './AuthProvider/AuthProvider.jsx';
 import Add from './Component/Home/Add.jsx';
 import Error from './Eroor/Error.jsx';
+import AllArt from './Component/Laout/AllArt.jsx';
+import PrivetRoute from './Route/PrivetRoute.jsx';
+import MyArt from './Component/Home/MyArt.jsx';
+import Details from './Component/Home/Details.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Rott></Rott>,
-    errorElement:<Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: '/',
@@ -34,8 +39,24 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path:'/addCarft',
-        element:<Add></Add>
+        path: '/addCarft',
+        element: <PrivetRoute><Add></Add></PrivetRoute>
+      },
+      {
+        path: '/add',
+        element: <AllArt></AllArt>,
+        loader: () => fetch('http://localhost:5000/art')
+      },
+      {
+        path: '/myart',
+        element: <PrivetRoute><MyArt></MyArt></PrivetRoute>
+      },
+      {
+        path: '/details/:id',
+        element: <PrivetRoute>
+          <Details></Details>
+        </PrivetRoute>,
+         
       }
     ]
   },

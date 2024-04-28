@@ -1,5 +1,4 @@
 import useAuth from "../../Hook/useAuth";
-import Navbar from "./Navbar";
 import Swal from 'sweetalert2'
 const Add = () => {
     const { user } = useAuth();
@@ -55,7 +54,6 @@ const Add = () => {
     return (
 
         <div>
-            <Navbar></Navbar>
             <div className="bg-[#F4F3F0] mt-8 rounded-xl p-24">
 
                 <h2 className="text-3xl text-success font-bold text-center ">Add Craft</h2>

@@ -35,8 +35,7 @@ const Login = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
-            <h1 className="text-center text-3xl font-bold">Please Login</h1>
+            <h1 className="text-center text-3xl font-bold animate__animated animate__bounce animate__delay-2s">Please Login</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body md:w-3/4 lg:w-1/2 mx-auto">
                 <div className="form-control">
                     <label className="label">
