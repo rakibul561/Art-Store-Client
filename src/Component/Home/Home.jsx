@@ -31,9 +31,6 @@ const Home = () => {
                 </p>
             </div>
             <Panting></Panting>
-            <div className="mt-12">
-                <Fotter></Fotter>
-            </div>
         </div>
     );
 };

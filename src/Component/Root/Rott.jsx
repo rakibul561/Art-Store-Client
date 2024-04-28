@@ -4,10 +4,14 @@ import Fotter from "../Laout/Fotter";
 
 const Rott = () => {
     return (
-        <div className="max-w-7xl mx-auto">
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Fotter></Fotter>
+        <div >
+            <div className="max-w-7xl mx-auto">
+                <Navbar></Navbar>
+                <Outlet></Outlet>
+            </div>
+            <div className="mt-8">
+                <Fotter></Fotter>
+            </div>
         </div>
     );
 };

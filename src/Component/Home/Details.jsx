@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 const Details = () => {
@@ -16,29 +16,31 @@ const Details = () => {
                 setProducet(data)
             })
     }, [id])
-    const { name, short_description, subcategory_Name, price, rating, photo, processing_time, customization, _id } = product;
+    const { name, short_description, subcategory_Name, price, rating, photo, processing_time, customization, } = product;
 
     return (
         <div>
-            <section className="dark:bg-gray-100 dark:text-gray-800">
-                <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-                    <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-                        <h1 className="text-5xl font-bold leading-none sm:text-6xl">Ac mattis
-                            <span className="dark:text-violet-600">senectus</span>erat pharetra
-                        </h1>
-                        <p className="mt-6 mb-8 text-lg sm:mb-12">Dictum aliquam porta in condimentum ac integer
-                            <br className="hidden md:inline lg:hidden" />turpis pulvinar, est scelerisque ligula sem
-                        </p>
-                        <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-                            <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-600 dark:text-gray-50">Suspendisse</a>
-                            <a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-800">Malesuada</a>
+            <div className="hero mt-8 lg:p-8 rounded-lg bg-base-200">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                    <img src={photo} className="lg:w-[500px] rounded-lg shadow-2xl" />
+                    <div>
+                        <h1 className="text-5xl font-bold">Name: {name}!</h1>
+                        <h2 className="text-3xl font-bold mt-4">subcategory Name: {subcategory_Name}</h2>
+                        <p className="py-6">Description: {short_description}</p>
+                        <div className=" flex justify-between text-2xl text-yellow-400  ">
+                            <p>Price: {price}$</p>
+                            <p>Rating: {rating}</p>
+                            <p>Time: {processing_time}</p>
                         </div>
+                        <div className="mt-8 btn text-white btn-success">
+                            <Link to='/'>Back to Home</Link>
+                        </div>
+
                     </div>
-                    <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-                        <img src="assets/svg/Business_SVG.svg" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
-                    </div>
+
                 </div>
-            </section>
+
+            </div>
         </div>
     );
 };
