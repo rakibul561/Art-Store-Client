@@ -2,6 +2,11 @@
 const Contact = () => {
     return (
         <div>
+            <div className="text-center mt-4 space-y-4">
+                <h1 className="text-5xl font-bold"> Contact </h1>
+                <p className="text-2xl">
+                    For inquiries or collaborations, please contact us through the form provided below</p>
+            </div>
             <section className="py-6 dark:bg-gray-100 mt-8 dark:text-gray-900">
                 <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                     <div className="py-6 md:py-0 md:px-6">
@@ -42,7 +47,7 @@ const Contact = () => {
                             <span className="mb-1">Message</span>
                             <textarea rows="3" placeholder="send me your message" className="block w-full  rounded-md focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:bg-gray-100" data-sider-insert-id="eaa372b6-a3bb-4004-b790-65f9c6ebb6d3" data-sider-select-id="d5829ece-ef51-4edf-a3d3-59f9c97f0f9e"></textarea>
                         </label>
-                         <button className="btn btn-success text-white text-xl">Submit</button>
+                        <button className="btn btn-success text-white text-xl">Submit</button>
                     </form>
                 </div>
             </section>
