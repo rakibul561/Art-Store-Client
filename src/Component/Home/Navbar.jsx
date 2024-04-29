@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
 
@@ -19,7 +20,15 @@ const Navbar = () => {
 
     const handleLogOUt = async () => {
         await logOut()
-        alert("LogOut Successfully")
+        if (logOut.insertedId) {
+            Swal.fire({
+                title: 'Success!',
+                text: 'User Added successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            })
+
+        }
         navigate("/login")
     }
 //    return

@@ -3,7 +3,12 @@ import useAuth from "../Hook/useAuth";
 
 
 const PrivetRoute = ({children}) => {
-    const {user} = useAuth();
+    
+    // const {loading} =
+    const {user,loading} = useAuth();
+    if(loading){
+        return <span className=" loading loading-spinner text-primary"></span>
+    }
     if(user){
         return children
     }

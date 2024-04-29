@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 // import Button from "./Button";
 import useAuth from "../../Hook/useAuth";
-import Navbar from "../Home/Navbar";
 import Button from "./Button";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -27,7 +27,17 @@ const Login = () => {
             .catch(error => {
                 console.error(error);
             })
-        alert("login successfully")
+
+            if (data.insertedId) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'User login successfully',
+                    icon: 'success',
+                    confirmButtonText: 'ok'
+                })
+
+            }
+        
     };
 
 

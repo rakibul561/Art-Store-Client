@@ -46,7 +46,7 @@ const Add = () => {
                 }
             })
 
-
+           form.reset();
     }
 
 
