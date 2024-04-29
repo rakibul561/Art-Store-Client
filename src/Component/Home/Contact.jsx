@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 
 const Contact = () => {
     return (
@@ -7,7 +8,7 @@ const Contact = () => {
                 <p className="text-2xl">
                     For inquiries or collaborations, please contact us through the form provided below</p>
             </div>
-            <section className="py-6 dark:bg-gray-100 mt-8 dark:text-gray-900">
+            <section className="py-6 dark:bg-gray-100 mt-8 dark:text-gray-900" data-aos="zoom-out-left" >
                 <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                     <div className="py-6 md:py-0 md:px-6">
                         <h1 className="text-4xl font-bold" data-sider-select-id="2f8565ad-be89-443e-a6ba-061c6ffc61d3">Art & Craft Store</h1>

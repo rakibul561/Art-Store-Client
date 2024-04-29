@@ -54,7 +54,7 @@ const Add = () => {
     return (
 
         <div>
-            <div className="bg-[#F4F3F0] mt-8 rounded-xl p-24">
+            <div className="bg-[#F4F3F0] mt-8 rounded-xl p-24" >
 
                 <h2 className="text-3xl text-success font-bold text-center ">Add Craft</h2>
                 <p className="text-center mb-4 italic">Explore endless creativity at our art & craft store! Unleash your imagination with quality supplies for painting, <br /> drawing, sculpting, and more. From vibrant paints to intricate tools, we ve got everything for seasoned artists <br /> and beginners alike. Discover inspiration in every aisle and bring your artistic visions to life with us today!</p>

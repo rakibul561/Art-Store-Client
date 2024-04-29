@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Aos from 'aos';
 import 'aos/dist/aos.css'
@@ -8,6 +9,7 @@ const CartCard = ({ art }) => {
     useEffect(()=>{
         Aos.init();
     },[])
+    // eslint-disable-next-line no-unused-vars
     const { name, short_description, subcategory_Name, price, rating, photo, processing_time, customization, _id } = art;
     return (
         <div>
