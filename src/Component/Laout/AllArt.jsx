@@ -6,7 +6,7 @@ const AllArt = () => {
 
     return (
         <div>
-            <h2>my all art {card.length}</h2>
+            <h2 className="text-5xl font-semibold text-center mt-4 mb-8  ">All Art & craft Items</h2>
             <div className="grid lg:grid-cols-3 gap-4">
                     {
                         card.map(art => <CartCard

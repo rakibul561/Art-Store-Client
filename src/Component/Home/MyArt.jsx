@@ -5,7 +5,11 @@ import Update from "./Update";
 const MyArt = () => {
 
     const { user } = useAuth();
-    const [item, setItem] = useState();
+
+    const [item, setItem] = useState([]);
+    console.log(item);
+
+
     console.log(item);
 
     useEffect(() => {
@@ -17,19 +21,10 @@ const MyArt = () => {
             })
     }, [user])
 
-
-
     return (
         <div>
-             <h2 className="text-center text-purple-600 my-20 text-4xl font-extralight">List My All item</h2>
-            <div className="grid md:grid-cols-2 gap-8 ">
-                {
-                    item?.map(i => <Update
-                        key={i.id}
-                        i={i}
-                    ></Update>)
-                }
-            </div>
+            <h2 className="text-center text-purple-600 my-20 text-4xl font-extralight">List My All item</h2>
+            <Update item={item} setItem={setItem} />
 
         </div>
     );

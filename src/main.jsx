@@ -18,6 +18,7 @@ import AllArt from './Component/Laout/AllArt.jsx';
 import PrivetRoute from './Route/PrivetRoute.jsx';
 import MyArt from './Component/Home/MyArt.jsx';
 import Details from './Component/Home/Details.jsx';
+import AddUpdate from './Component/Laout/AddUpdate.jsx';
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,11 @@ const router = createBrowserRouter([
         element: <PrivetRoute>
           <Details></Details>
         </PrivetRoute>,
-         
+      },
+      {
+        path: '/update/:id',
+        element: <AddUpdate></AddUpdate>,
+        loader: ({params}) => fetch(`http://localhost:5000/art/${params.id}`)
       }
     ]
   },

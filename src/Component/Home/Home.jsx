@@ -2,7 +2,6 @@ import { useLoaderData } from "react-router-dom";
 import Header from "./Header";
 import CartCard from "./CartCard";
 import Panting from "./Panting";
-import Fotter from "../Laout/Fotter";
 import Contact from "./Contact";
 
 const Home = () => {
