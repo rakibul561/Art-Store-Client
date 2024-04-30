@@ -17,13 +17,13 @@ const Add = () => {
         const email = user.email;
         const userName = user.displayName;
 
-        const art = { name, short_description, subcategory_Name, price, rating, photo, processing_time,stockStatus, customization, email, userName }
+        const art = { name, short_description, subcategory_Name, price, rating, photo, processing_time, stockStatus, customization, email, userName }
         console.log(art);
 
 
         // server side data 
 
-        fetch('http://localhost:5000/art', {
+        fetch('https://art-store-server-six.vercel.app/art', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -45,7 +45,7 @@ const Add = () => {
                 }
             })
 
-           form.reset();
+        form.reset();
     }
 
 

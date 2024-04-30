@@ -24,7 +24,7 @@ const Update = ({ item, setItem }) => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:5000/art/${_id}`, {
+                fetch(`https://art-store-server-six.vercel.app/art/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -39,10 +39,6 @@ const Update = ({ item, setItem }) => {
 
                             const filterdData = item?.filter((i) => i?._id !== _id)
                             setItem(filterdData)
-
-
-
-
 
                         }
                     })

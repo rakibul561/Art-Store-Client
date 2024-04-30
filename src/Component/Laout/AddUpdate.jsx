@@ -29,7 +29,7 @@ const AddUpdate = () => {
 
         // server side data 
 
-        fetch(`http://localhost:5000/art/${_id}`, {
+        fetch(`https://art-store-server-six.vercel.app/art/${_id}`, {
             method: 'PuT',
             headers: {
                 'content-type': 'application/json'

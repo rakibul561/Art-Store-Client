@@ -9,7 +9,7 @@ const Details = () => {
     console.log(product);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/newArt/${id}`)
+        fetch(`https://art-store-server-six.vercel.app/newArt/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

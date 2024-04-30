@@ -13,7 +13,7 @@ const MyArt = () => {
     console.log(item);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myArt/${user?.email}`)
+        fetch(`https://art-store-server-six.vercel.app/myArt/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setItem(data)

@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/art')
+        loader: () => fetch('https://art-store-server-six.vercel.app/art')
       },
       {
         path: '/login',
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: '/add',
         element: <AllArt></AllArt>,
-        loader: () => fetch('http://localhost:5000/art')
+        loader: () => fetch('https://art-store-server-six.vercel.app/art')
       },
       {
         path: '/myart',
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       {
         path: '/update/:id',
         element: <AddUpdate></AddUpdate>,
-        loader: ({params}) => fetch(`http://localhost:5000/art/${params.id}`)
+        loader: ({ params }) => fetch(`https://art-store-server-six.vercel.app/art/${params.id}`)
       }
     ]
   },
